@@ -1,4 +1,29 @@
 # fluentbit
+## Input File
+```
+[INPUT]
+    Name        tail
+    Path        /var/log/*
+    Exclude     *.gz
+    Path_Key    filepath
+    Key unstructured_logs
+    Tag tagMatch
+    DB /etc/td-agent-bit/tail.db
+    Parser       generic
+```
+## Output Eleastic
+```
+[OUTPUT]
+    Name    es
+    Host    10.230.84.20
+    Port    9201
+    HTTP_User   elastic
+    HTTP_Passwd elastic123
+    Logstash_Format True
+    Logstash_Prefix indexName
+    Match *
+    Type _doc
+```
 ## Remove Unstructured logs
 ```
 [FILTER]
