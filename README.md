@@ -11,6 +11,7 @@
     DB /etc/td-agent-bit/tail.db
     Parser       generic
 ```
+Long lines
 ```
     Buffer_Chunk_Size 1M
     Buffer_Max_Size 1M
