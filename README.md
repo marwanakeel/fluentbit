@@ -63,3 +63,50 @@ Long lines
     Time_key timestamp
     Time_Offset +0200
 ```
+## Add Host Openshift
+```
+[Filter]
+    Name    record_modifier
+    Match   *
+    Record MY_NODE_NAME ${MY_NODE_NAME}
+    Record MY_POD_NAME ${MY_POD_NAME}
+    Record MY_POD_NAMESPACE ${MY_POD_NAMESPACE}
+    Record MY_POD_IP ${MY_POD_IP}
+    Record MY_HOST_IP ${MY_HOST_IP}
+    Record MY_POD_SERVICE_ACCOUNT ${MY_POD_SERVICE_ACCOUNT}
+```
+then add this in the DC
+```
+env:
+    - name: MY_NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: MY_POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: MY_POD_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    - name: MY_HOST_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.hostIP
+    - name: MY_POD_SERVICE_ACCOUNT
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.serviceAccountName
+
+```
