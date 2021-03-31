@@ -4,7 +4,7 @@
 [INPUT]
     Name        tail
     Path        /var/log/*
-    Exclude     *.gz
+    Exclude_Path     *.gz
     Path_Key    filepath
     Key unstructured_logs
     Tag tagMatch
