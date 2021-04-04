@@ -62,6 +62,8 @@ Long lines
     Time_Format %Y-%m-%dT%H:%M:%S.%L
     Time_key timestamp
     Time_Offset +0200
+    Types   duration:integer
+
 ```
 ## Add Host Openshift
 ```
